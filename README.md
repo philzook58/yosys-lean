@@ -109,5 +109,9 @@ circuits in Lean and Icarus. The translation trusts Yosys and this exporter;
 this is not a certified Verilog compiler. [Checks and trust boundary](docs/validation.md).
 Read [how passing proofs can give false confidence, and our improvement plan](docs/confidence.md).
 
+# AI Disclosure
+The code is heavily agent produced
+
+
 [Installation options](docs/build.md) · [Semantics](docs/semantics.md) ·
 [Proof workflow](docs/proving.md) · [Next benchmarks](ROADMAP.md)
