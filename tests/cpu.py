@@ -115,7 +115,10 @@ def check_ibex_frontend(args, run, root):
     original = [line for line in run([folder / 'Vtb']).stdout.splitlines() if re.match(r'^\d+,', line)]
     converted = [line for line in run([args.vvp, args.work / 'IbexALU.vvp']).stdout.splitlines()
                  if re.match(r'^\d+,', line)]
-    assert original == converted and len(original) == 325
+    assert len(original) == len(converted) == 325, (len(original), len(converted))
+    for n, (a, b) in enumerate(zip(original, converted)):
+        assert a == b, ('Ibex original/converted mismatch', n,
+                        (args.work / 'IbexALU.csv').read_text().splitlines()[n], a, b)
     print('PASS: original Ibex SystemVerilog vs converted Verilog, 325 vectors, all output ports', flush=True)
 
 

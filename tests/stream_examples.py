@@ -67,6 +67,11 @@ def check_examples(args, run, generated, env, root, circuits):
         rtl = lambda kind, field: provenance[kind, field]
         declarations = " ".join(f"reg [{w-1}:0] {rtl('Inputs', f)};" for f, w in ins)
         declarations += " " + " ".join(f"wire [{w-1}:0] {rtl('Outputs', f)};" for f, w in outs)
+        # Verilator 5.020 does not reschedule combinational logic when $fscanf
+        # writes ports directly. Scan temporaries, then assign the inputs normally.
+        declarations += " " + " ".join(f"reg [{w-1}:0] sample_{n};" for n, (_, w) in enumerate(ins))
+        scanned = ",".join(f"sample_{n}" for n in range(len(ins)))
+        drive = " ".join(f"{rtl('Inputs', f)}=sample_{n};" for n, (f, _) in enumerate(ins))
         ports = [f".{rtl(k, f)}({rtl(k, f)})" for k in ("Inputs", "Outputs") for f, _ in fields[k]]
         if states:
             clock = re.search(r"-- Clock port omitted from Inputs: (\w+);", model.read_text())[1]
@@ -87,8 +92,8 @@ def check_examples(args, run, generated, env, root, circuits):
         tb.write_text(f"module tb; reg clk; {declarations}\n{top} dut({','.join(ports)});\n"
             + "integer fd,status; initial begin clk=0; #1; " + initialize
             + f' fd=$fopen("{csv}","r"); while(!$feof(fd)) begin\n'
-            + f'status=$fscanf(fd,"{readfmt}",{",".join(rtl("Inputs", f) for f, _ in ins)});\n'
-            + f"if(status=={len(ins)}) begin clk=0; #1; {sampling} end end\n"
+            + f'status=$fscanf(fd,"{readfmt}",{scanned});\n'
+            + f"if(status=={len(ins)}) begin {drive} clk=0; #1; {sampling} end end\n"
             + "$finish; end endmodule\n")
         binary = args.work / (name + ".vvp")
         run([args.iverilog, "-g2012", "-s", "tb", "-o", binary, root / source, tb])
