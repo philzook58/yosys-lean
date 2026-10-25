@@ -1,0 +1,73 @@
+{
+  "repositories": {
+    "smtbmc": {
+      "url": "https://github.com/YosysHQ/yosys",
+      "revision": "3718f7f135dc25381c50f18e550bdc5f48663ec3"
+    },
+    "sby": {
+      "url": "https://github.com/YosysHQ/sby",
+      "revision": "79fc9eddca5e33a28cc2f2cd19c9825efd9a7255"
+    },
+    "eqy": {
+      "url": "https://github.com/YosysHQ/eqy",
+      "revision": "fb8b21160297b3e66bf94f3c24f8a8bf1cd3fd51"
+    }
+  },
+  "files": {
+    "upstream/eqy/COPYING": {
+      "repository": "eqy",
+      "upstream_path": "COPYING",
+      "git_blob": "55f0274c158524c715dc565aaa6c1a113a13229d"
+    },
+    "upstream/eqy/fsm.eqy": {
+      "repository": "eqy",
+      "upstream_path": "examples/simple/fsm.eqy",
+      "git_blob": "881016df9cf47a222fa253c39f9d21696f2099ae"
+    },
+    "upstream/eqy/fsm.sv": {
+      "repository": "eqy",
+      "upstream_path": "examples/simple/fsm.sv",
+      "git_blob": "05ebe2c21d902429427f2502fa9e90cd45bb9061"
+    },
+    "upstream/sby/COPYING": {
+      "repository": "sby",
+      "upstream_path": "COPYING",
+      "git_blob": "eba1da22eb50fca103909fe4488beb8c16c8adca"
+    },
+    "upstream/sby/cover.sv": {
+      "repository": "sby",
+      "upstream_path": "docs/examples/quickstart/cover.sv",
+      "git_blob": "478ce36bdef2f447e9285baa5983a979b391f5ee"
+    },
+    "upstream/sby/demo.sby": {
+      "repository": "sby",
+      "upstream_path": "docs/examples/quickstart/demo.sby",
+      "git_blob": "0e8fdcf733b06b659fe328ad8239fc5bb84bdf9e"
+    },
+    "upstream/sby/demo.sv": {
+      "repository": "sby",
+      "upstream_path": "docs/examples/quickstart/demo.sv",
+      "git_blob": "fea915bff55e5fd208cb2293503d6596482fde0f"
+    },
+    "upstream/sby/prove.sby": {
+      "repository": "sby",
+      "upstream_path": "docs/examples/quickstart/prove.sby",
+      "git_blob": "a83fcd554b64eab8bff6426b49e8a2b187d29f20"
+    },
+    "upstream/sby/prove.sv": {
+      "repository": "sby",
+      "upstream_path": "docs/examples/quickstart/prove.sv",
+      "git_blob": "72b353e80818854a7916d85e8118a7d6b91a4f65"
+    },
+    "upstream/smtbmc/COPYING": {
+      "repository": "smtbmc",
+      "upstream_path": "COPYING",
+      "git_blob": "a3ca45b42e35a5d026ab7cab9b80fa34a3a089ca"
+    },
+    "upstream/smtbmc/demo1.v": {
+      "repository": "smtbmc",
+      "upstream_path": "examples/smtbmc/demo1.v",
+      "git_blob": "567dde1483e9307cd188bbb31875c8045da9e294"
+    }
+  }
+}

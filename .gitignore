@@ -1,0 +1,14 @@
+/build*/
+/vendor/
+/.lake/
+/lake-manifest.json
+__pycache__/
+*.py[cod]
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
+*.o
+*.so
+*.vvp
+*.vcd

@@ -1,0 +1,667 @@
+import Examples.Generated.Ripple32
+
+-- Generated proof instrumentation; do not edit.
+namespace v_Ripple32Wires
+
+structure Carries where
+  c0 : BitVec 1
+  c1 : BitVec 1
+  c2 : BitVec 1
+  c3 : BitVec 1
+  c4 : BitVec 1
+  c5 : BitVec 1
+  c6 : BitVec 1
+  c7 : BitVec 1
+  c8 : BitVec 1
+  c9 : BitVec 1
+  c10 : BitVec 1
+  c11 : BitVec 1
+  c12 : BitVec 1
+  c13 : BitVec 1
+  c14 : BitVec 1
+  c15 : BitVec 1
+  c16 : BitVec 1
+  c17 : BitVec 1
+  c18 : BitVec 1
+  c19 : BitVec 1
+  c20 : BitVec 1
+  c21 : BitVec 1
+  c22 : BitVec 1
+  c23 : BitVec 1
+  c24 : BitVec 1
+  c25 : BitVec 1
+  c26 : BitVec 1
+  c27 : BitVec 1
+  c28 : BitVec 1
+  c29 : BitVec 1
+  c30 : BitVec 1
+  c31 : BitVec 1
+  c32 : BitVec 1
+
+def eval (inputs : v_Ripple32.Inputs) (state : v_Ripple32.State) :
+    (v_Ripple32.Outputs × v_Ripple32.State) × Carries :=
+  -- a : input; src: examples/bird/ripple.v:2.30-2.31
+  let v_a : BitVec 32 := inputs.v_a
+  -- n1 : slice
+  let v_n1 : BitVec 1 := (BitVec.extractLsb' 0 1 v_a)
+  -- b : input; src: examples/bird/ripple.v:2.33-2.34
+  let v_b : BitVec 32 := inputs.v_b
+  -- n3 : slice
+  let v_n3 : BitVec 1 := (BitVec.extractLsb' 0 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$1_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n4 : BitVec 1 := (v_n1 ^^^ v_n3)
+  -- cin : input; src: examples/bird/ripple.v:2.42-2.45
+  let v_cin : BitVec 1 := inputs.v_cin
+  -- $examples/bird/ripple.v:8$xor$2$\Y : bitwise_xor
+  let v_n6 : BitVec 1 := (v_n4 ^^^ v_cin)
+  -- n7 : slice
+  let v_n7 : BitVec 1 := (BitVec.extractLsb' 1 1 v_a)
+  -- n8 : slice
+  let v_n8 : BitVec 1 := (BitVec.extractLsb' 1 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$7_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n9 : BitVec 1 := (v_n7 ^^^ v_n8)
+  -- $examples/bird/ripple.v:9$and$3_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n10 : BitVec 1 := (v_n1 &&& v_n3)
+  -- $examples/bird/ripple.v:9$xor$4_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n11 : BitVec 1 := (v_n1 ^^^ v_n3)
+  -- $examples/bird/ripple.v:9$and$5_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n12 : BitVec 1 := (v_n11 &&& v_cin)
+  -- column[1].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_1__carry_in : BitVec 1 := (v_n10 ||| v_n12)
+  -- $examples/bird/ripple.v:8$xor$8$\Y : bitwise_xor
+  let v_n14 : BitVec 1 := (v_n9 ^^^ v_column_1__carry_in)
+  -- n15 : concat
+  let v_n15 : BitVec 2 := (BitVec.append v_n14 v_n6)
+  -- n16 : slice
+  let v_n16 : BitVec 1 := (BitVec.extractLsb' 2 1 v_a)
+  -- n17 : slice
+  let v_n17 : BitVec 1 := (BitVec.extractLsb' 2 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$13_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n18 : BitVec 1 := (v_n16 ^^^ v_n17)
+  -- $examples/bird/ripple.v:9$and$9_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n19 : BitVec 1 := (v_n7 &&& v_n8)
+  -- $examples/bird/ripple.v:9$xor$10_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n20 : BitVec 1 := (v_n7 ^^^ v_n8)
+  -- $examples/bird/ripple.v:9$and$11_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n21 : BitVec 1 := (v_n20 &&& v_column_1__carry_in)
+  -- column[2].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_2__carry_in : BitVec 1 := (v_n19 ||| v_n21)
+  -- $examples/bird/ripple.v:8$xor$14$\Y : bitwise_xor
+  let v_n23 : BitVec 1 := (v_n18 ^^^ v_column_2__carry_in)
+  -- n24 : concat
+  let v_n24 : BitVec 3 := (BitVec.append v_n23 v_n15)
+  -- n25 : slice
+  let v_n25 : BitVec 1 := (BitVec.extractLsb' 3 1 v_a)
+  -- n26 : slice
+  let v_n26 : BitVec 1 := (BitVec.extractLsb' 3 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$19_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n27 : BitVec 1 := (v_n25 ^^^ v_n26)
+  -- $examples/bird/ripple.v:9$and$15_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n28 : BitVec 1 := (v_n16 &&& v_n17)
+  -- $examples/bird/ripple.v:9$xor$16_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n29 : BitVec 1 := (v_n16 ^^^ v_n17)
+  -- $examples/bird/ripple.v:9$and$17_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n30 : BitVec 1 := (v_n29 &&& v_column_2__carry_in)
+  -- column[3].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_3__carry_in : BitVec 1 := (v_n28 ||| v_n30)
+  -- $examples/bird/ripple.v:8$xor$20$\Y : bitwise_xor
+  let v_n32 : BitVec 1 := (v_n27 ^^^ v_column_3__carry_in)
+  -- n33 : concat
+  let v_n33 : BitVec 4 := (BitVec.append v_n32 v_n24)
+  -- n34 : slice
+  let v_n34 : BitVec 1 := (BitVec.extractLsb' 4 1 v_a)
+  -- n35 : slice
+  let v_n35 : BitVec 1 := (BitVec.extractLsb' 4 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$25_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n36 : BitVec 1 := (v_n34 ^^^ v_n35)
+  -- $examples/bird/ripple.v:9$and$21_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n37 : BitVec 1 := (v_n25 &&& v_n26)
+  -- $examples/bird/ripple.v:9$xor$22_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n38 : BitVec 1 := (v_n25 ^^^ v_n26)
+  -- $examples/bird/ripple.v:9$and$23_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n39 : BitVec 1 := (v_n38 &&& v_column_3__carry_in)
+  -- column[4].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_4__carry_in : BitVec 1 := (v_n37 ||| v_n39)
+  -- $examples/bird/ripple.v:8$xor$26$\Y : bitwise_xor
+  let v_n41 : BitVec 1 := (v_n36 ^^^ v_column_4__carry_in)
+  -- n42 : concat
+  let v_n42 : BitVec 5 := (BitVec.append v_n41 v_n33)
+  -- n43 : slice
+  let v_n43 : BitVec 1 := (BitVec.extractLsb' 5 1 v_a)
+  -- n44 : slice
+  let v_n44 : BitVec 1 := (BitVec.extractLsb' 5 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$31_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n45 : BitVec 1 := (v_n43 ^^^ v_n44)
+  -- $examples/bird/ripple.v:9$and$27_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n46 : BitVec 1 := (v_n34 &&& v_n35)
+  -- $examples/bird/ripple.v:9$xor$28_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n47 : BitVec 1 := (v_n34 ^^^ v_n35)
+  -- $examples/bird/ripple.v:9$and$29_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n48 : BitVec 1 := (v_n47 &&& v_column_4__carry_in)
+  -- column[5].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_5__carry_in : BitVec 1 := (v_n46 ||| v_n48)
+  -- $examples/bird/ripple.v:8$xor$32$\Y : bitwise_xor
+  let v_n50 : BitVec 1 := (v_n45 ^^^ v_column_5__carry_in)
+  -- n51 : concat
+  let v_n51 : BitVec 6 := (BitVec.append v_n50 v_n42)
+  -- n52 : slice
+  let v_n52 : BitVec 1 := (BitVec.extractLsb' 6 1 v_a)
+  -- n53 : slice
+  let v_n53 : BitVec 1 := (BitVec.extractLsb' 6 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$37_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n54 : BitVec 1 := (v_n52 ^^^ v_n53)
+  -- $examples/bird/ripple.v:9$and$33_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n55 : BitVec 1 := (v_n43 &&& v_n44)
+  -- $examples/bird/ripple.v:9$xor$34_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n56 : BitVec 1 := (v_n43 ^^^ v_n44)
+  -- $examples/bird/ripple.v:9$and$35_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n57 : BitVec 1 := (v_n56 &&& v_column_5__carry_in)
+  -- column[6].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_6__carry_in : BitVec 1 := (v_n55 ||| v_n57)
+  -- $examples/bird/ripple.v:8$xor$38$\Y : bitwise_xor
+  let v_n59 : BitVec 1 := (v_n54 ^^^ v_column_6__carry_in)
+  -- n60 : concat
+  let v_n60 : BitVec 7 := (BitVec.append v_n59 v_n51)
+  -- n61 : slice
+  let v_n61 : BitVec 1 := (BitVec.extractLsb' 7 1 v_a)
+  -- n62 : slice
+  let v_n62 : BitVec 1 := (BitVec.extractLsb' 7 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$43_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n63 : BitVec 1 := (v_n61 ^^^ v_n62)
+  -- $examples/bird/ripple.v:9$and$39_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n64 : BitVec 1 := (v_n52 &&& v_n53)
+  -- $examples/bird/ripple.v:9$xor$40_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n65 : BitVec 1 := (v_n52 ^^^ v_n53)
+  -- $examples/bird/ripple.v:9$and$41_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n66 : BitVec 1 := (v_n65 &&& v_column_6__carry_in)
+  -- column[7].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_7__carry_in : BitVec 1 := (v_n64 ||| v_n66)
+  -- $examples/bird/ripple.v:8$xor$44$\Y : bitwise_xor
+  let v_n68 : BitVec 1 := (v_n63 ^^^ v_column_7__carry_in)
+  -- n69 : concat
+  let v_n69 : BitVec 8 := (BitVec.append v_n68 v_n60)
+  -- n70 : slice
+  let v_n70 : BitVec 1 := (BitVec.extractLsb' 8 1 v_a)
+  -- n71 : slice
+  let v_n71 : BitVec 1 := (BitVec.extractLsb' 8 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$49_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n72 : BitVec 1 := (v_n70 ^^^ v_n71)
+  -- $examples/bird/ripple.v:9$and$45_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n73 : BitVec 1 := (v_n61 &&& v_n62)
+  -- $examples/bird/ripple.v:9$xor$46_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n74 : BitVec 1 := (v_n61 ^^^ v_n62)
+  -- $examples/bird/ripple.v:9$and$47_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n75 : BitVec 1 := (v_n74 &&& v_column_7__carry_in)
+  -- column[8].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_8__carry_in : BitVec 1 := (v_n73 ||| v_n75)
+  -- $examples/bird/ripple.v:8$xor$50$\Y : bitwise_xor
+  let v_n77 : BitVec 1 := (v_n72 ^^^ v_column_8__carry_in)
+  -- n78 : concat
+  let v_n78 : BitVec 9 := (BitVec.append v_n77 v_n69)
+  -- n79 : slice
+  let v_n79 : BitVec 1 := (BitVec.extractLsb' 9 1 v_a)
+  -- n80 : slice
+  let v_n80 : BitVec 1 := (BitVec.extractLsb' 9 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$55_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n81 : BitVec 1 := (v_n79 ^^^ v_n80)
+  -- $examples/bird/ripple.v:9$and$51_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n82 : BitVec 1 := (v_n70 &&& v_n71)
+  -- $examples/bird/ripple.v:9$xor$52_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n83 : BitVec 1 := (v_n70 ^^^ v_n71)
+  -- $examples/bird/ripple.v:9$and$53_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n84 : BitVec 1 := (v_n83 &&& v_column_8__carry_in)
+  -- column[9].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_9__carry_in : BitVec 1 := (v_n82 ||| v_n84)
+  -- $examples/bird/ripple.v:8$xor$56$\Y : bitwise_xor
+  let v_n86 : BitVec 1 := (v_n81 ^^^ v_column_9__carry_in)
+  -- n87 : concat
+  let v_n87 : BitVec 10 := (BitVec.append v_n86 v_n78)
+  -- n88 : slice
+  let v_n88 : BitVec 1 := (BitVec.extractLsb' 10 1 v_a)
+  -- n89 : slice
+  let v_n89 : BitVec 1 := (BitVec.extractLsb' 10 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$61_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n90 : BitVec 1 := (v_n88 ^^^ v_n89)
+  -- $examples/bird/ripple.v:9$and$57_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n91 : BitVec 1 := (v_n79 &&& v_n80)
+  -- $examples/bird/ripple.v:9$xor$58_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n92 : BitVec 1 := (v_n79 ^^^ v_n80)
+  -- $examples/bird/ripple.v:9$and$59_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n93 : BitVec 1 := (v_n92 &&& v_column_9__carry_in)
+  -- column[10].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_10__carry_in : BitVec 1 := (v_n91 ||| v_n93)
+  -- $examples/bird/ripple.v:8$xor$62$\Y : bitwise_xor
+  let v_n95 : BitVec 1 := (v_n90 ^^^ v_column_10__carry_in)
+  -- n96 : concat
+  let v_n96 : BitVec 11 := (BitVec.append v_n95 v_n87)
+  -- n97 : slice
+  let v_n97 : BitVec 1 := (BitVec.extractLsb' 11 1 v_a)
+  -- n98 : slice
+  let v_n98 : BitVec 1 := (BitVec.extractLsb' 11 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$67_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n99 : BitVec 1 := (v_n97 ^^^ v_n98)
+  -- $examples/bird/ripple.v:9$and$63_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n100 : BitVec 1 := (v_n88 &&& v_n89)
+  -- $examples/bird/ripple.v:9$xor$64_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n101 : BitVec 1 := (v_n88 ^^^ v_n89)
+  -- $examples/bird/ripple.v:9$and$65_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n102 : BitVec 1 := (v_n101 &&& v_column_10__carry_in)
+  -- column[11].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_11__carry_in : BitVec 1 := (v_n100 ||| v_n102)
+  -- $examples/bird/ripple.v:8$xor$68$\Y : bitwise_xor
+  let v_n104 : BitVec 1 := (v_n99 ^^^ v_column_11__carry_in)
+  -- n105 : concat
+  let v_n105 : BitVec 12 := (BitVec.append v_n104 v_n96)
+  -- n106 : slice
+  let v_n106 : BitVec 1 := (BitVec.extractLsb' 12 1 v_a)
+  -- n107 : slice
+  let v_n107 : BitVec 1 := (BitVec.extractLsb' 12 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$73_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n108 : BitVec 1 := (v_n106 ^^^ v_n107)
+  -- $examples/bird/ripple.v:9$and$69_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n109 : BitVec 1 := (v_n97 &&& v_n98)
+  -- $examples/bird/ripple.v:9$xor$70_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n110 : BitVec 1 := (v_n97 ^^^ v_n98)
+  -- $examples/bird/ripple.v:9$and$71_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n111 : BitVec 1 := (v_n110 &&& v_column_11__carry_in)
+  -- column[12].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_12__carry_in : BitVec 1 := (v_n109 ||| v_n111)
+  -- $examples/bird/ripple.v:8$xor$74$\Y : bitwise_xor
+  let v_n113 : BitVec 1 := (v_n108 ^^^ v_column_12__carry_in)
+  -- n114 : concat
+  let v_n114 : BitVec 13 := (BitVec.append v_n113 v_n105)
+  -- n115 : slice
+  let v_n115 : BitVec 1 := (BitVec.extractLsb' 13 1 v_a)
+  -- n116 : slice
+  let v_n116 : BitVec 1 := (BitVec.extractLsb' 13 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$79_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n117 : BitVec 1 := (v_n115 ^^^ v_n116)
+  -- $examples/bird/ripple.v:9$and$75_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n118 : BitVec 1 := (v_n106 &&& v_n107)
+  -- $examples/bird/ripple.v:9$xor$76_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n119 : BitVec 1 := (v_n106 ^^^ v_n107)
+  -- $examples/bird/ripple.v:9$and$77_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n120 : BitVec 1 := (v_n119 &&& v_column_12__carry_in)
+  -- column[13].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_13__carry_in : BitVec 1 := (v_n118 ||| v_n120)
+  -- $examples/bird/ripple.v:8$xor$80$\Y : bitwise_xor
+  let v_n122 : BitVec 1 := (v_n117 ^^^ v_column_13__carry_in)
+  -- n123 : concat
+  let v_n123 : BitVec 14 := (BitVec.append v_n122 v_n114)
+  -- n124 : slice
+  let v_n124 : BitVec 1 := (BitVec.extractLsb' 14 1 v_a)
+  -- n125 : slice
+  let v_n125 : BitVec 1 := (BitVec.extractLsb' 14 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$85_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n126 : BitVec 1 := (v_n124 ^^^ v_n125)
+  -- $examples/bird/ripple.v:9$and$81_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n127 : BitVec 1 := (v_n115 &&& v_n116)
+  -- $examples/bird/ripple.v:9$xor$82_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n128 : BitVec 1 := (v_n115 ^^^ v_n116)
+  -- $examples/bird/ripple.v:9$and$83_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n129 : BitVec 1 := (v_n128 &&& v_column_13__carry_in)
+  -- column[14].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_14__carry_in : BitVec 1 := (v_n127 ||| v_n129)
+  -- $examples/bird/ripple.v:8$xor$86$\Y : bitwise_xor
+  let v_n131 : BitVec 1 := (v_n126 ^^^ v_column_14__carry_in)
+  -- n132 : concat
+  let v_n132 : BitVec 15 := (BitVec.append v_n131 v_n123)
+  -- n133 : slice
+  let v_n133 : BitVec 1 := (BitVec.extractLsb' 15 1 v_a)
+  -- n134 : slice
+  let v_n134 : BitVec 1 := (BitVec.extractLsb' 15 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$91_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n135 : BitVec 1 := (v_n133 ^^^ v_n134)
+  -- $examples/bird/ripple.v:9$and$87_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n136 : BitVec 1 := (v_n124 &&& v_n125)
+  -- $examples/bird/ripple.v:9$xor$88_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n137 : BitVec 1 := (v_n124 ^^^ v_n125)
+  -- $examples/bird/ripple.v:9$and$89_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n138 : BitVec 1 := (v_n137 &&& v_column_14__carry_in)
+  -- column[15].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_15__carry_in : BitVec 1 := (v_n136 ||| v_n138)
+  -- $examples/bird/ripple.v:8$xor$92$\Y : bitwise_xor
+  let v_n140 : BitVec 1 := (v_n135 ^^^ v_column_15__carry_in)
+  -- n141 : concat
+  let v_n141 : BitVec 16 := (BitVec.append v_n140 v_n132)
+  -- n142 : slice
+  let v_n142 : BitVec 1 := (BitVec.extractLsb' 16 1 v_a)
+  -- n143 : slice
+  let v_n143 : BitVec 1 := (BitVec.extractLsb' 16 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$97_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n144 : BitVec 1 := (v_n142 ^^^ v_n143)
+  -- $examples/bird/ripple.v:9$and$93_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n145 : BitVec 1 := (v_n133 &&& v_n134)
+  -- $examples/bird/ripple.v:9$xor$94_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n146 : BitVec 1 := (v_n133 ^^^ v_n134)
+  -- $examples/bird/ripple.v:9$and$95_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n147 : BitVec 1 := (v_n146 &&& v_column_15__carry_in)
+  -- column[16].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_16__carry_in : BitVec 1 := (v_n145 ||| v_n147)
+  -- $examples/bird/ripple.v:8$xor$98$\Y : bitwise_xor
+  let v_n149 : BitVec 1 := (v_n144 ^^^ v_column_16__carry_in)
+  -- n150 : concat
+  let v_n150 : BitVec 17 := (BitVec.append v_n149 v_n141)
+  -- n151 : slice
+  let v_n151 : BitVec 1 := (BitVec.extractLsb' 17 1 v_a)
+  -- n152 : slice
+  let v_n152 : BitVec 1 := (BitVec.extractLsb' 17 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$103_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n153 : BitVec 1 := (v_n151 ^^^ v_n152)
+  -- $examples/bird/ripple.v:9$and$99_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n154 : BitVec 1 := (v_n142 &&& v_n143)
+  -- $examples/bird/ripple.v:9$xor$100_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n155 : BitVec 1 := (v_n142 ^^^ v_n143)
+  -- $examples/bird/ripple.v:9$and$101_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n156 : BitVec 1 := (v_n155 &&& v_column_16__carry_in)
+  -- column[17].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_17__carry_in : BitVec 1 := (v_n154 ||| v_n156)
+  -- $examples/bird/ripple.v:8$xor$104$\Y : bitwise_xor
+  let v_n158 : BitVec 1 := (v_n153 ^^^ v_column_17__carry_in)
+  -- n159 : concat
+  let v_n159 : BitVec 18 := (BitVec.append v_n158 v_n150)
+  -- n160 : slice
+  let v_n160 : BitVec 1 := (BitVec.extractLsb' 18 1 v_a)
+  -- n161 : slice
+  let v_n161 : BitVec 1 := (BitVec.extractLsb' 18 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$109_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n162 : BitVec 1 := (v_n160 ^^^ v_n161)
+  -- $examples/bird/ripple.v:9$and$105_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n163 : BitVec 1 := (v_n151 &&& v_n152)
+  -- $examples/bird/ripple.v:9$xor$106_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n164 : BitVec 1 := (v_n151 ^^^ v_n152)
+  -- $examples/bird/ripple.v:9$and$107_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n165 : BitVec 1 := (v_n164 &&& v_column_17__carry_in)
+  -- column[18].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_18__carry_in : BitVec 1 := (v_n163 ||| v_n165)
+  -- $examples/bird/ripple.v:8$xor$110$\Y : bitwise_xor
+  let v_n167 : BitVec 1 := (v_n162 ^^^ v_column_18__carry_in)
+  -- n168 : concat
+  let v_n168 : BitVec 19 := (BitVec.append v_n167 v_n159)
+  -- n169 : slice
+  let v_n169 : BitVec 1 := (BitVec.extractLsb' 19 1 v_a)
+  -- n170 : slice
+  let v_n170 : BitVec 1 := (BitVec.extractLsb' 19 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$115_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n171 : BitVec 1 := (v_n169 ^^^ v_n170)
+  -- $examples/bird/ripple.v:9$and$111_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n172 : BitVec 1 := (v_n160 &&& v_n161)
+  -- $examples/bird/ripple.v:9$xor$112_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n173 : BitVec 1 := (v_n160 ^^^ v_n161)
+  -- $examples/bird/ripple.v:9$and$113_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n174 : BitVec 1 := (v_n173 &&& v_column_18__carry_in)
+  -- column[19].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_19__carry_in : BitVec 1 := (v_n172 ||| v_n174)
+  -- $examples/bird/ripple.v:8$xor$116$\Y : bitwise_xor
+  let v_n176 : BitVec 1 := (v_n171 ^^^ v_column_19__carry_in)
+  -- n177 : concat
+  let v_n177 : BitVec 20 := (BitVec.append v_n176 v_n168)
+  -- n178 : slice
+  let v_n178 : BitVec 1 := (BitVec.extractLsb' 20 1 v_a)
+  -- n179 : slice
+  let v_n179 : BitVec 1 := (BitVec.extractLsb' 20 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$121_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n180 : BitVec 1 := (v_n178 ^^^ v_n179)
+  -- $examples/bird/ripple.v:9$and$117_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n181 : BitVec 1 := (v_n169 &&& v_n170)
+  -- $examples/bird/ripple.v:9$xor$118_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n182 : BitVec 1 := (v_n169 ^^^ v_n170)
+  -- $examples/bird/ripple.v:9$and$119_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n183 : BitVec 1 := (v_n182 &&& v_column_19__carry_in)
+  -- column[20].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_20__carry_in : BitVec 1 := (v_n181 ||| v_n183)
+  -- $examples/bird/ripple.v:8$xor$122$\Y : bitwise_xor
+  let v_n185 : BitVec 1 := (v_n180 ^^^ v_column_20__carry_in)
+  -- n186 : concat
+  let v_n186 : BitVec 21 := (BitVec.append v_n185 v_n177)
+  -- n187 : slice
+  let v_n187 : BitVec 1 := (BitVec.extractLsb' 21 1 v_a)
+  -- n188 : slice
+  let v_n188 : BitVec 1 := (BitVec.extractLsb' 21 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$127_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n189 : BitVec 1 := (v_n187 ^^^ v_n188)
+  -- $examples/bird/ripple.v:9$and$123_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n190 : BitVec 1 := (v_n178 &&& v_n179)
+  -- $examples/bird/ripple.v:9$xor$124_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n191 : BitVec 1 := (v_n178 ^^^ v_n179)
+  -- $examples/bird/ripple.v:9$and$125_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n192 : BitVec 1 := (v_n191 &&& v_column_20__carry_in)
+  -- column[21].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_21__carry_in : BitVec 1 := (v_n190 ||| v_n192)
+  -- $examples/bird/ripple.v:8$xor$128$\Y : bitwise_xor
+  let v_n194 : BitVec 1 := (v_n189 ^^^ v_column_21__carry_in)
+  -- n195 : concat
+  let v_n195 : BitVec 22 := (BitVec.append v_n194 v_n186)
+  -- n196 : slice
+  let v_n196 : BitVec 1 := (BitVec.extractLsb' 22 1 v_a)
+  -- n197 : slice
+  let v_n197 : BitVec 1 := (BitVec.extractLsb' 22 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$133_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n198 : BitVec 1 := (v_n196 ^^^ v_n197)
+  -- $examples/bird/ripple.v:9$and$129_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n199 : BitVec 1 := (v_n187 &&& v_n188)
+  -- $examples/bird/ripple.v:9$xor$130_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n200 : BitVec 1 := (v_n187 ^^^ v_n188)
+  -- $examples/bird/ripple.v:9$and$131_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n201 : BitVec 1 := (v_n200 &&& v_column_21__carry_in)
+  -- column[22].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_22__carry_in : BitVec 1 := (v_n199 ||| v_n201)
+  -- $examples/bird/ripple.v:8$xor$134$\Y : bitwise_xor
+  let v_n203 : BitVec 1 := (v_n198 ^^^ v_column_22__carry_in)
+  -- n204 : concat
+  let v_n204 : BitVec 23 := (BitVec.append v_n203 v_n195)
+  -- n205 : slice
+  let v_n205 : BitVec 1 := (BitVec.extractLsb' 23 1 v_a)
+  -- n206 : slice
+  let v_n206 : BitVec 1 := (BitVec.extractLsb' 23 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$139_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n207 : BitVec 1 := (v_n205 ^^^ v_n206)
+  -- $examples/bird/ripple.v:9$and$135_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n208 : BitVec 1 := (v_n196 &&& v_n197)
+  -- $examples/bird/ripple.v:9$xor$136_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n209 : BitVec 1 := (v_n196 ^^^ v_n197)
+  -- $examples/bird/ripple.v:9$and$137_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n210 : BitVec 1 := (v_n209 &&& v_column_22__carry_in)
+  -- column[23].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_23__carry_in : BitVec 1 := (v_n208 ||| v_n210)
+  -- $examples/bird/ripple.v:8$xor$140$\Y : bitwise_xor
+  let v_n212 : BitVec 1 := (v_n207 ^^^ v_column_23__carry_in)
+  -- n213 : concat
+  let v_n213 : BitVec 24 := (BitVec.append v_n212 v_n204)
+  -- n214 : slice
+  let v_n214 : BitVec 1 := (BitVec.extractLsb' 24 1 v_a)
+  -- n215 : slice
+  let v_n215 : BitVec 1 := (BitVec.extractLsb' 24 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$145_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n216 : BitVec 1 := (v_n214 ^^^ v_n215)
+  -- $examples/bird/ripple.v:9$and$141_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n217 : BitVec 1 := (v_n205 &&& v_n206)
+  -- $examples/bird/ripple.v:9$xor$142_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n218 : BitVec 1 := (v_n205 ^^^ v_n206)
+  -- $examples/bird/ripple.v:9$and$143_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n219 : BitVec 1 := (v_n218 &&& v_column_23__carry_in)
+  -- column[24].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_24__carry_in : BitVec 1 := (v_n217 ||| v_n219)
+  -- $examples/bird/ripple.v:8$xor$146$\Y : bitwise_xor
+  let v_n221 : BitVec 1 := (v_n216 ^^^ v_column_24__carry_in)
+  -- n222 : concat
+  let v_n222 : BitVec 25 := (BitVec.append v_n221 v_n213)
+  -- n223 : slice
+  let v_n223 : BitVec 1 := (BitVec.extractLsb' 25 1 v_a)
+  -- n224 : slice
+  let v_n224 : BitVec 1 := (BitVec.extractLsb' 25 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$151_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n225 : BitVec 1 := (v_n223 ^^^ v_n224)
+  -- $examples/bird/ripple.v:9$and$147_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n226 : BitVec 1 := (v_n214 &&& v_n215)
+  -- $examples/bird/ripple.v:9$xor$148_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n227 : BitVec 1 := (v_n214 ^^^ v_n215)
+  -- $examples/bird/ripple.v:9$and$149_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n228 : BitVec 1 := (v_n227 &&& v_column_24__carry_in)
+  -- column[25].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_25__carry_in : BitVec 1 := (v_n226 ||| v_n228)
+  -- $examples/bird/ripple.v:8$xor$152$\Y : bitwise_xor
+  let v_n230 : BitVec 1 := (v_n225 ^^^ v_column_25__carry_in)
+  -- n231 : concat
+  let v_n231 : BitVec 26 := (BitVec.append v_n230 v_n222)
+  -- n232 : slice
+  let v_n232 : BitVec 1 := (BitVec.extractLsb' 26 1 v_a)
+  -- n233 : slice
+  let v_n233 : BitVec 1 := (BitVec.extractLsb' 26 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$157_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n234 : BitVec 1 := (v_n232 ^^^ v_n233)
+  -- $examples/bird/ripple.v:9$and$153_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n235 : BitVec 1 := (v_n223 &&& v_n224)
+  -- $examples/bird/ripple.v:9$xor$154_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n236 : BitVec 1 := (v_n223 ^^^ v_n224)
+  -- $examples/bird/ripple.v:9$and$155_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n237 : BitVec 1 := (v_n236 &&& v_column_25__carry_in)
+  -- column[26].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_26__carry_in : BitVec 1 := (v_n235 ||| v_n237)
+  -- $examples/bird/ripple.v:8$xor$158$\Y : bitwise_xor
+  let v_n239 : BitVec 1 := (v_n234 ^^^ v_column_26__carry_in)
+  -- n240 : concat
+  let v_n240 : BitVec 27 := (BitVec.append v_n239 v_n231)
+  -- n241 : slice
+  let v_n241 : BitVec 1 := (BitVec.extractLsb' 27 1 v_a)
+  -- n242 : slice
+  let v_n242 : BitVec 1 := (BitVec.extractLsb' 27 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$163_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n243 : BitVec 1 := (v_n241 ^^^ v_n242)
+  -- $examples/bird/ripple.v:9$and$159_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n244 : BitVec 1 := (v_n232 &&& v_n233)
+  -- $examples/bird/ripple.v:9$xor$160_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n245 : BitVec 1 := (v_n232 ^^^ v_n233)
+  -- $examples/bird/ripple.v:9$and$161_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n246 : BitVec 1 := (v_n245 &&& v_column_26__carry_in)
+  -- column[27].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_27__carry_in : BitVec 1 := (v_n244 ||| v_n246)
+  -- $examples/bird/ripple.v:8$xor$164$\Y : bitwise_xor
+  let v_n248 : BitVec 1 := (v_n243 ^^^ v_column_27__carry_in)
+  -- n249 : concat
+  let v_n249 : BitVec 28 := (BitVec.append v_n248 v_n240)
+  -- n250 : slice
+  let v_n250 : BitVec 1 := (BitVec.extractLsb' 28 1 v_a)
+  -- n251 : slice
+  let v_n251 : BitVec 1 := (BitVec.extractLsb' 28 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$169_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n252 : BitVec 1 := (v_n250 ^^^ v_n251)
+  -- $examples/bird/ripple.v:9$and$165_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n253 : BitVec 1 := (v_n241 &&& v_n242)
+  -- $examples/bird/ripple.v:9$xor$166_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n254 : BitVec 1 := (v_n241 ^^^ v_n242)
+  -- $examples/bird/ripple.v:9$and$167_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n255 : BitVec 1 := (v_n254 &&& v_column_27__carry_in)
+  -- column[28].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_28__carry_in : BitVec 1 := (v_n253 ||| v_n255)
+  -- $examples/bird/ripple.v:8$xor$170$\Y : bitwise_xor
+  let v_n257 : BitVec 1 := (v_n252 ^^^ v_column_28__carry_in)
+  -- n258 : concat
+  let v_n258 : BitVec 29 := (BitVec.append v_n257 v_n249)
+  -- n259 : slice
+  let v_n259 : BitVec 1 := (BitVec.extractLsb' 29 1 v_a)
+  -- n260 : slice
+  let v_n260 : BitVec 1 := (BitVec.extractLsb' 29 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$175_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n261 : BitVec 1 := (v_n259 ^^^ v_n260)
+  -- $examples/bird/ripple.v:9$and$171_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n262 : BitVec 1 := (v_n250 &&& v_n251)
+  -- $examples/bird/ripple.v:9$xor$172_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n263 : BitVec 1 := (v_n250 ^^^ v_n251)
+  -- $examples/bird/ripple.v:9$and$173_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n264 : BitVec 1 := (v_n263 &&& v_column_28__carry_in)
+  -- column[29].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_29__carry_in : BitVec 1 := (v_n262 ||| v_n264)
+  -- $examples/bird/ripple.v:8$xor$176$\Y : bitwise_xor
+  let v_n266 : BitVec 1 := (v_n261 ^^^ v_column_29__carry_in)
+  -- n267 : concat
+  let v_n267 : BitVec 30 := (BitVec.append v_n266 v_n258)
+  -- n268 : slice
+  let v_n268 : BitVec 1 := (BitVec.extractLsb' 30 1 v_a)
+  -- n269 : slice
+  let v_n269 : BitVec 1 := (BitVec.extractLsb' 30 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$181_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n270 : BitVec 1 := (v_n268 ^^^ v_n269)
+  -- $examples/bird/ripple.v:9$and$177_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n271 : BitVec 1 := (v_n259 &&& v_n260)
+  -- $examples/bird/ripple.v:9$xor$178_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n272 : BitVec 1 := (v_n259 ^^^ v_n260)
+  -- $examples/bird/ripple.v:9$and$179_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n273 : BitVec 1 := (v_n272 &&& v_column_29__carry_in)
+  -- column[30].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_30__carry_in : BitVec 1 := (v_n271 ||| v_n273)
+  -- $examples/bird/ripple.v:8$xor$182$\Y : bitwise_xor
+  let v_n275 : BitVec 1 := (v_n270 ^^^ v_column_30__carry_in)
+  -- n276 : concat
+  let v_n276 : BitVec 31 := (BitVec.append v_n275 v_n267)
+  -- n277 : slice
+  let v_n277 : BitVec 1 := (BitVec.extractLsb' 31 1 v_a)
+  -- n278 : slice
+  let v_n278 : BitVec 1 := (BitVec.extractLsb' 31 1 v_b)
+  -- $examples/bird/ripple.v:8$xor$187_Y : bitwise_xor; src: examples/bird/ripple.v:8.21-8.32
+  let v_n279 : BitVec 1 := (v_n277 ^^^ v_n278)
+  -- $examples/bird/ripple.v:9$and$183_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n280 : BitVec 1 := (v_n268 &&& v_n269)
+  -- $examples/bird/ripple.v:9$xor$184_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n281 : BitVec 1 := (v_n268 ^^^ v_n269)
+  -- $examples/bird/ripple.v:9$and$185_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n282 : BitVec 1 := (v_n281 &&& v_column_30__carry_in)
+  -- column[31].carry_in : bitwise_or; src: examples/bird/ripple.v:5.10-5.18
+  let v_column_31__carry_in : BitVec 1 := (v_n280 ||| v_n282)
+  -- $examples/bird/ripple.v:8$xor$188$\Y : bitwise_xor
+  let v_n284 : BitVec 1 := (v_n279 ^^^ v_column_31__carry_in)
+  -- sum : concat; src: examples/bird/ripple.v:2.61-2.64
+  let v_sum : BitVec 32 := (BitVec.append v_n284 v_n276)
+  -- $examples/bird/ripple.v:9$and$189_Y : bitwise_and; src: examples/bird/ripple.v:9.25-9.36
+  let v_n286 : BitVec 1 := (v_n277 &&& v_n278)
+  -- $examples/bird/ripple.v:9$xor$190_Y : bitwise_xor; src: examples/bird/ripple.v:9.42-9.53
+  let v_n287 : BitVec 1 := (v_n277 ^^^ v_n278)
+  -- $examples/bird/ripple.v:9$and$191_Y : bitwise_and; src: examples/bird/ripple.v:9.41-9.65
+  let v_n288 : BitVec 1 := (v_n287 &&& v_column_31__carry_in)
+  -- cout : bitwise_or; src: examples/bird/ripple.v:2.73-2.77
+  let v_cout : BitVec 1 := (v_n286 ||| v_n288)
+  (({
+     v_sum := v_sum,
+     v_cout := v_cout
+   }, {
+
+   }), {
+     c0 := v_cin,
+     c1 := v_column_1__carry_in,
+     c2 := v_column_2__carry_in,
+     c3 := v_column_3__carry_in,
+     c4 := v_column_4__carry_in,
+     c5 := v_column_5__carry_in,
+     c6 := v_column_6__carry_in,
+     c7 := v_column_7__carry_in,
+     c8 := v_column_8__carry_in,
+     c9 := v_column_9__carry_in,
+     c10 := v_column_10__carry_in,
+     c11 := v_column_11__carry_in,
+     c12 := v_column_12__carry_in,
+     c13 := v_column_13__carry_in,
+     c14 := v_column_14__carry_in,
+     c15 := v_column_15__carry_in,
+     c16 := v_column_16__carry_in,
+     c17 := v_column_17__carry_in,
+     c18 := v_column_18__carry_in,
+     c19 := v_column_19__carry_in,
+     c20 := v_column_20__carry_in,
+     c21 := v_column_21__carry_in,
+     c22 := v_column_22__carry_in,
+     c23 := v_column_23__carry_in,
+     c24 := v_column_24__carry_in,
+     c25 := v_column_25__carry_in,
+     c26 := v_column_26__carry_in,
+     c27 := v_column_27__carry_in,
+     c28 := v_column_28__carry_in,
+     c29 := v_column_29__carry_in,
+     c30 := v_column_30__carry_in,
+     c31 := v_column_31__carry_in,
+     c32 := v_cout
+   })
+
+theorem projection (i : v_Ripple32.Inputs) (s : v_Ripple32.State) :
+    (eval i s).1 = v_Ripple32.eval i s := by rfl
+
+end v_Ripple32Wires

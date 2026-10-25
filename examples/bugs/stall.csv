@@ -1,0 +1,5 @@
+reset,in_valid,out_ready,in_data
+1,0,0,0
+0,1,0,42
+0,1,0,99
+0,0,0,0

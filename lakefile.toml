@@ -1,0 +1,9 @@
+name = "yosysLean"
+version = "0.1.0"
+defaultTargets = ["YosysLean", "Examples"]
+
+[[lean_lib]]
+name = "YosysLean"
+
+[[lean_lib]]
+name = "Examples"

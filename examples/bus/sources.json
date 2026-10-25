@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/ZipCPU/wb2axip",
+  "revision": "2e8d3bc2d26ddc33d1881022a2a2b9d3f0c16b9b",
+  "sha256": {
+    "upstream/easyaxil.v": "e5cc2acfca9814c1bb17da869cca35097e799e711ea7d8e17463d89be176cd44",
+    "upstream/faxil_register.v": "51ed6e788c3043851cf525d65b79c82842a9c50cd5d2921a283b0521cd5ceddd",
+    "upstream/faxil_slave.v": "b2b4b2a16e044e6224a17bd083b7b4ad6b6b2a67d887507b39845188fdbdc9a0",
+    "upstream/skidbuffer.v": "ed1fda9192563fd7fd7033b564e8cf47ad6cb63ba4f578ed2c302037d47a5389"
+  }
+}

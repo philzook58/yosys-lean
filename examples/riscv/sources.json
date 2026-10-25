@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "repository": "https://github.com/YosysHQ/nerv",
+      "revision": "15755d1c843cd028255e283f21c34cef02f750e8",
+      "files": {
+        "upstream/nerv/nerv.sv": "nerv.sv"
+      }
+    },
+    {
+      "repository": "https://github.com/YosysHQ/riscv-formal",
+      "revision": "c992aa61fdfe0846c5ed90324c596202a1c69b76",
+      "files": {
+        "upstream/riscv-formal/rvfi_insn_check.sv": "checks/rvfi_insn_check.sv",
+        "upstream/riscv-formal/rvfi_macros.vh": "checks/rvfi_macros.vh",
+        "upstream/riscv-formal/insn_addi.v": "insns/insn_addi.v",
+        "upstream/riscv-formal/insn_add.v": "insns/insn_add.v"
+      }
+    }
+  ],
+  "sha256": {
+    "upstream/nerv/nerv.sv": "1c4e5ad6ab2eb3ce74c71e5db4bc54dde1bf958ff109d6905687c93e9841c543",
+    "upstream/riscv-formal/insn_add.v": "d118b62cc257a7a2da676db1ec335caa96cb33bc3736e5ac9f5eb696e80345a1",
+    "upstream/riscv-formal/insn_addi.v": "3229150956457796347fd8d5a1d9f6d879a737bc383015b2b7197d8aa29c5eba",
+    "upstream/riscv-formal/rvfi_insn_check.sv": "a3383a7b27fe29e44ed7148e93b7ba3f7a3061ba7d65e96a100b5d027b21f89b",
+    "upstream/riscv-formal/rvfi_macros.vh": "d96c7d468c3bcc3e3c5bfc6637246886dfe2633b734210a4c639ea1f5f183ed7"
+  }
+}

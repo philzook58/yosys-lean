@@ -1,0 +1,27 @@
+{
+  "sources": [
+    {
+      "repository": "https://github.com/lowRISC/ibex",
+      "revision": "a896ef22777a40ad3f5a2a3b97fecd5116480c4c",
+      "files": {
+        "upstream/ibex_pkg.sv": "rtl/ibex_pkg.sv",
+        "upstream/ibex_alu.sv": "rtl/ibex_alu.sv",
+        "upstream/LICENSE": "LICENSE"
+      }
+    }
+  ],
+  "sha256": {
+    "upstream/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "upstream/ibex_alu.sv": "6fb9a6a300bb040ab62d6c12ccd9e29dc241f44d52ac2982b63e037cf66afee2",
+    "upstream/ibex_pkg.sv": "18c986c83664daee64660dab3a57796d9b6ae2cb95fd4fc76543753cfe57110e",
+    "converted/ibex_alu.v": "fadc00862f4fd95a207ef6adc844e6e1be02aa0a42ba8001e2434c0b588f3a8a"
+  },
+  "conversion": {
+    "tool": "sv2v v0.0.13",
+    "release": "https://github.com/zachjs/sv2v/releases/tag/v0.0.13",
+    "archive": "https://github.com/zachjs/sv2v/releases/download/v0.0.13/sv2v-Linux.zip",
+    "archive_sha256": "552799a1d76cd177b9b4cc63a3e77823a3d2a6eb4ec006569288abeff28e1ff8",
+    "command": "sv2v examples/ibex/upstream/ibex_pkg.sv examples/ibex/upstream/ibex_alu.sv",
+    "output": "converted/ibex_alu.v"
+  }
+}
