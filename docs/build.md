@@ -44,3 +44,8 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
+GitHub Actions builds on Ubuntu 24.04 and runs both CTest suites, including
+Verilator replay. Yosys and Lean use the project pins; CI uses Z3 4.13.4.
+`YOSYS_LEAN_TEST_TIMEOUT` controls each whole regression suite deadline
+(default 900 seconds; CI allows 1800). Individual Lean checks keep their existing
+memory limits and 120-second deadline. Failure logs are uploaded as CI artifacts.

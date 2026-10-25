@@ -63,6 +63,7 @@ endif()
 
 include(CTest)
 if(BUILD_TESTING)
+  set(YOSYS_LEAN_TEST_TIMEOUT 900 CACHE STRING "Whole regression suite timeout in seconds")
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   find_program(LAKE_EXECUTABLE lake REQUIRED)
   find_program(Z3_EXECUTABLE z3 REQUIRED)
@@ -72,13 +73,13 @@ if(BUILD_TESTING)
     --yosys "${YOSYS_EXECUTABLE}" --plugin "${CMAKE_BINARY_DIR}/yosys_lean.so"
     --work "${CMAKE_BINARY_DIR}/tests" --lake "${LAKE_EXECUTABLE}"
     --z3 "${Z3_EXECUTABLE}" --iverilog "${IVERILOG_EXECUTABLE}" --vvp "${VVP_EXECUTABLE}")
-  set_tests_properties(exporter-and-proofs PROPERTIES TIMEOUT 600
+  set_tests_properties(exporter-and-proofs PROPERTIES TIMEOUT "${YOSYS_LEAN_TEST_TIMEOUT}"
     WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}")
   add_test(NAME nerv-faults COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/tests/nerv_faults.py"
     --yosys "${YOSYS_EXECUTABLE}" --plugin "${CMAKE_BINARY_DIR}/yosys_lean.so"
     --work "${CMAKE_BINARY_DIR}/nerv-fault-tests" --lake "${LAKE_EXECUTABLE}"
     --z3 "${Z3_EXECUTABLE}" --iverilog "${IVERILOG_EXECUTABLE}" --vvp "${VVP_EXECUTABLE}")
-  set_tests_properties(nerv-faults PROPERTIES TIMEOUT 900
+  set_tests_properties(nerv-faults PROPERTIES TIMEOUT "${YOSYS_LEAN_TEST_TIMEOUT}"
     WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}")
   # Even `ctest -j` must not start simultaneous proof-checking processes.
   set_tests_properties(exporter-and-proofs nerv-faults PROPERTIES RUN_SERIAL TRUE)
